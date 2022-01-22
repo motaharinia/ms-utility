@@ -287,3 +287,9 @@
 * Changed:
 * Fixed:
   * fixed default serialize and deserialize features in CustomObjectMapper
+  
+#### [0.0.45] - 2021-01-22
+* Added:
+* Changed:
+* Fixed:
+    * fixed "htmlCustomString" to "customHtmlString" in JsonDeserializerString

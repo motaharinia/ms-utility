@@ -1,14 +1,15 @@
 package com.motaharinia.msutility.custom.customjson.deserializer;
 
+import java.io.IOException;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.motaharinia.msutility.custom.customexception.utility.UtilityException;
 import com.motaharinia.msutility.tools.string.StringTools;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.ObjectUtils;
 
-import java.io.IOException;
+import org.springframework.util.ObjectUtils;
 
 /**
  * @author eng.motahari@gmail.com<br>
@@ -24,7 +25,7 @@ public class JsonDeserializerString extends JsonDeserializer<String> {
         if (ObjectUtils.isEmpty(jp.getCurrentName()) || ObjectUtils.isEmpty(jp.getText())) {
             return jp.getText();
         } else {
-            if (jp.getCurrentName().equalsIgnoreCase("htmlCustomString")) {
+            if (jp.getCurrentName().equalsIgnoreCase("customHtmlString")) {
                 return jp.getText();
             } else {
                 try {
