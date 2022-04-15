@@ -1,51 +1,55 @@
 package com.motaharinia.msutility.custom.customdto;
 
+import java.io.Serializable;
+import java.time.Instant;
+
 import com.motaharinia.msutility.custom.customdto.exception.ExceptionDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-import java.time.Instant;
-
 
 /**
  * @author eng.motahari@gmail.com<br>
- * کلاس مدل پاسخ به کلاینت
+ * Client response DTO (used in all controller responses as a generic response)
  */
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClientResponseDto<T> implements Serializable {
-    /**
-     * داده برگشتی از سرور به کلاینت
-     */
-    private T data;
-    /**
-     * پیامی که کلاینت قرار است نمایش دهد
-     */
-    private String message;
-    /**
-     * زمان سرور در هنگام پاسخ
-     */
-    private Long currentTime = Instant.now().toEpochMilli();
-    /**
-     * اطلاعات خطا
-     */
-    private ExceptionDto exception;
-    /**
-     * کد رزرو برای حالتهای خاص ارتباط بین کلاینت و سرور
-     */
-    private Integer returnCode = 0;
+	/**
+	 * Response data (filled when back-end response OK status).
+	 */
+	private T data;
 
-    public ClientResponseDto(T data, String message) {
-        this.data = data;
-        this.message = message;
-    }
+	/**
+	 * The translated message to show in the client.
+	 */
+	private String message;
 
-    public ClientResponseDto(ExceptionDto exception, String message) {
-        this.exception = exception;
-        this.message = message;
-    }
+	/**
+	 * Response date time.
+	 */
+	private Long currentTime = Instant.now().toEpochMilli();
+
+	/**
+	 * Response exception (filled when back-end has any exception or validation).
+	 */
+	private ExceptionDto exception;
+
+	/**
+	 * Additional data for client.
+	 */
+	private String additionalData;
+
+	public ClientResponseDto(T data, String message) {
+		this.data = data;
+		this.message = message;
+	}
+
+	public ClientResponseDto(ExceptionDto exception, String message) {
+		this.exception = exception;
+		this.message = message;
+	}
 }
