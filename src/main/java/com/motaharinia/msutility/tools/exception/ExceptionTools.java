@@ -32,7 +32,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
  */
 public interface ExceptionTools {
 
-	String CUSTOM_VALIDATION_KEY = "CUSTOM_VALIDATION";
+	String CUSTOM_VALIDATION_KEY = "VALIDATION_EXCEPTION";
 
 	/**
 	 * Converts an exception to DTO.
